@@ -6,14 +6,14 @@ import { toast } from "react-toastify";
 const TodoList = () => {
   const [todos, setTodos] = useState([]);
 
-  // const addTodo = (todo) => {
-  //   if (!todo.text || /^\s*$/.test(todo.text)) {
-  //     return;
-  //   }
+  const addTodo = (todo) => {
+    if (!todo.text || /^\s*$/.test(todo.text)) {
+      return;
+    }
 
-  //   const newTodos = [...todos, todo];
-  //   setTodos(newTodos);
-  // };
+    const newTodos = [...todos, todo];
+    setTodos(newTodos);
+  };
 
   const updateTodo = (todoId, newValue) => {
     if (!newValue.text || /^\s*$/.test(newValue.text)) {
@@ -23,7 +23,7 @@ const TodoList = () => {
     setTodos((prev) =>
       prev.map((item) => (item.id === todoId ? newValue : item))
     );
-    toast.success("Todo updated");
+    toast.success("Todo updated!");
   };
 
   const removeTodo = (id) => {
@@ -49,7 +49,7 @@ const TodoList = () => {
 
   return (
     <div className="todo-list">
-      <TodoForm todos={todos} setTodos={setTodos} />
+      <TodoForm onSubmit={addTodo} todos={todos} setTodos={setTodos} />
       <Todo
         todos={todos}
         completeTodo={completeTodo}

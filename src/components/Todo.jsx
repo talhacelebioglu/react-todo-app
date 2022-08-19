@@ -21,7 +21,6 @@ const Todo = ({ todos, completeTodo, removeTodo, updateTodo }) => {
     return <TodoForm edit={edit} onSubmit={submitUpdate} />;
   }
 
-  
   return todos.map((todo, index) => (
     <div
       className={todo.isComplete ? "todo-item complete" : "todo-item"}

@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { toast } from "react-toastify";
 
-const TodoForm = ({ todo, todos, setTodos, edit }) => {
+const TodoForm = ({ onSubmit, todo, todos, setTodos, edit }) => {
   const [input, setInput] = useState(edit ? edit.value : "");
 
   const handleChange = (e) => {
@@ -12,23 +12,23 @@ const TodoForm = ({ todo, todos, setTodos, edit }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (input === "") {
-      toast.error("Please enter a todo!");
-    // } else if (todos.includes(input)) {
-    //   toast.error("Todo already exists!");
-    } else if (input.length < 5) {
-      toast.error("Todo must be at least 5 characters long!");
-    } else {
-      // onSubmit({
-      //   id: Math.floor(Math.random() * 1000),
-      //   text: input,
-      // });
-      const newTodos = { id: Math.floor(Math.random() * 1000), text: input };
-      setTodos([...todos, newTodos]);
-      setInput("");
-      toast.success("Todo added!");
-    }
+    onSubmit({
+      id: Math.floor(Math.random() * 1000),
+      text: input,
+    });
+    setInput("");
+    toast.success("Todo added!");
   };
+
+  // if (input === "") {
+  //   toast.error("Please enter a todo!");
+  // } else if (todos.includes(input)) {
+  //   toast.error("Todo already exists!");
+  // } else if (input.length < 5) {
+  //   toast.error("Todo must be at least 5 characters long!");
+  // } else {
+
+  // }
 
   return (
     <form className="todo-form" onSubmit={handleSubmit}>
