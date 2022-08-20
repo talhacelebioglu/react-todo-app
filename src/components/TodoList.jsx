@@ -13,6 +13,7 @@ const TodoList = () => {
 
     const newTodos = [...todos, todo];
     setTodos(newTodos);
+    toast.success("Todo added!");
   };
 
   const updateTodo = (todoId, newValue) => {

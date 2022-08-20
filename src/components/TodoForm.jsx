@@ -1,9 +1,12 @@
 import React from "react";
 import { useState } from "react";
-import { toast } from "react-toastify";
 
 const TodoForm = ({ onSubmit, todo, todos, setTodos, edit }) => {
   const [input, setInput] = useState(edit ? edit.value : "");
+
+  const cancelUpdate = () => {
+    setInput("");
+  };
 
   const handleChange = (e) => {
     setInput(e.target.value);
@@ -17,7 +20,6 @@ const TodoForm = ({ onSubmit, todo, todos, setTodos, edit }) => {
       text: input,
     });
     setInput("");
-    toast.success("Todo added!");
   };
 
   // if (input === "") {
@@ -41,8 +43,11 @@ const TodoForm = ({ onSubmit, todo, todos, setTodos, edit }) => {
             onChange={handleChange}
             autoFocus
           />
-          <button type="submit" className="btn-add">
+          <button type="submit" className="btn-update">
             Update
+          </button>
+          <button onClick={cancelUpdate} className="btn-cancel">
+            Cancel
           </button>
         </>
       ) : (

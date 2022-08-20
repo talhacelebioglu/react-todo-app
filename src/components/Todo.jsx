@@ -35,7 +35,7 @@ const Todo = ({ todos, completeTodo, removeTodo, updateTodo }) => {
         />
         <AiIcons.AiOutlineCheckCircle
           className="completed-icon"
-          title="Completed"
+          title="Completed / Not Completed"
           onClick={() => completeTodo(todo.id)}
         />
         <AiIcons.AiOutlineCloseCircle
